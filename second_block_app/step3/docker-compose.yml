@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  api:
+    image: goodniceweb/ruby-api:2.0
+    build: ./api
+    ports:
+      - "4567:4567"
+    environment:
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - ./logs:/app/logs
+  web:
+    image: goodniceweb/php-web-app:2.0
+    build: ./www
+    ports:
+      - "8082:80"
+    environment:
+      - API_ENDPOINT=http://api:4567/api/
+  redis:
+    image: redis
