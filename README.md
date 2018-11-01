@@ -192,7 +192,7 @@ Next command:
 
 ```
 # 1.24
-docker image push $DOCKERID/linux_tweet_app:1.0
+docker image push $DOCKERID/linux_tweet_app:2.0
 ```
 
 Example of output:
