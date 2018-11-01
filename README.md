@@ -213,36 +213,3 @@ https://hub.docker.com/r/<your_profile_id>/linux_tweet_app/
 
 ### End of Block #1
 
-### Block #2
-
-Inside `second_block_app/step1`:
-
-```
-# 2.1
-echo $DOCKERID
-docker build --tag $DOCKERID/php-web-app:1.0 .
-docker run -d -p 8080:80 --name php-web-app $DOCKERID/php-web-app:1.0
-```
-
-Inside `second_block_app/step2`:
-
-```
-# 2.2
-docker build --tag $DOCKERID/ruby-api:1.0 api/
-
-# 2.3
-docker run -d -p 4567:4567 --name api $DOCKERID/ruby-api:1.0
-
-# 2.4
-docker build --tag $DOCKERID/php-web-app:2.0 www/
-
-# 2.5
-docker run -d -p 8081:80 --link api:api --name php-web-app-2 -e API_ENDPOINT=http://api:4567/api/ $DOCKERID/php-web-app:2.0
-```
-
-Inside `second_block_app/step3`:
-
-```
-# 2.6
-docker-compose up --build
-```
