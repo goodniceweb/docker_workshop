@@ -14,7 +14,7 @@ services:
     image: goodniceweb/php-web-app:2.0
     build: ./www
     ports:
-      - "8082:80"
+      - "8080:80"
     environment:
       - API_ENDPOINT=http://api:4567/api/
   redis:
